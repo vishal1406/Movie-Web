@@ -1,0 +1,53 @@
+/* .rmdb-searchbar {
+  width: 100%;
+  height: 105px;
+  background: #1c1c1c;
+  position: relative;
+  padding: 25px 20px 0px 20px;
+  box-sizing: border-box;
+  color: #fff;
+} */
+
+.rmdb-searchbar-content {
+  max-width: 1280px;
+  width: 100%;
+  height: 45px;
+  background:#6073D6;
+  margin: 0 auto;
+  border-radius: 40px;
+  position: relative;
+  color:white;
+  margin-top: 20px;
+}
+
+.rmdb-fa-search {
+  position: absolute;
+  left: 20px;
+  top: 6px;
+  color:white;
+}
+
+.rmdb-searchbar-input {
+  font-family: helvetica;
+  font-size: 28px;
+  position: absolute;
+  left: 70px;
+  top: -3px;
+  border: 0;
+  background: transparent;
+  height: 40px;
+  color: white;
+}
+::placeholder{
+  color:white;
+}
+.rmdb-searchbar-input:focus {
+  outline: none;
+}
+
+@media screen and (max-width: 720px) {
+  .rmdb-searchbar-input {
+    font-size: 28px;
+    color: white;
+  }
+}
