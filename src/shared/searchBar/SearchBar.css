@@ -1,16 +1,6 @@
-/* .rmdb-searchbar {
-  width: 100%;
-  height: 105px;
-  background: #1c1c1c;
-  position: relative;
-  padding: 25px 20px 0px 20px;
-  box-sizing: border-box;
-  color: #fff;
-} */
-
 .rmdb-searchbar-content {
   max-width: 1280px;
-  width: 100%;
+  width: 50%;
   height: 45px;
   background:#6073D6;
   margin: 0 auto;

@@ -6,24 +6,23 @@ const Header = () => {
     return (
       <div className="topnav">
         <span>
-          <Link to="/" className="moto">Movie</Link>
+          <Link to="/" className="top-format">Movie</Link>
         </span>
         <span>
-          <Link to="/tvSeries" className="moto">Tv-Series</Link>
+          <Link to="/tvSeries" className="top-format">Tv-Series</Link>
         </span>
         <span>
-          <Link to="/actors" className="moto">Actors</Link>
+          <Link to="/actors" className="top-format">Actors</Link>
         </span>
         <div className="topnav-right">
           <span>
-            <Link to="/signin" className="moto">Sign in</Link>
+            <Link to="/signin" className="top-format">Sign in</Link>
           </span>
           <span>
-            <Link to="/signup" className="moto">Sign up</Link>
+            <Link to="/signup" className="top-format">Sign up</Link>
           </span>
         </div>
       </div>
     )
-
 }
 export default Header;

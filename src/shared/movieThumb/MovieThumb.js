@@ -5,26 +5,25 @@ import './MovieThumb.css';
 
 const MovieThumb = (props) => {
     return (
-     <div className="rmdb-moviethumb">
-     {props.clickable ?
-     <Link to={{pathname: `/${props.movieId}`, movieName: `${props.movieName}`}}>
-     <div class="flip-card">
-       <div class="flip-card-inner">
-          <div class="flip-card-front">
-           <img src={props.image} alt="moviethumb" />
+    <div className="rmdb-moviethumb">
+    {props.clickable ?
+      <Link to={{pathname: `/movie/${props.movieId}`, movieName: `${props.movieName}`}}>
+      <div className="flip-card">
+        <div className="flip-card-inner">
+          <div className="flip-card-front">
+            <img src={props.image} alt="moviethumb" />
           </div>
-        <div class="flip-card-back">
-        <h1>Movie Name</h1> 
-        <p>Director</p>
-        <p>Click for more Info</p>
+          <div className="flip-card-back">
+            <h2>{props.movieName}</h2>
+            <p>Click for more Info</p>
+          </div>
+        </div>
       </div>
+      </Link>
+        :
+        <img src={props.image} alt="moviethumb" />
+      }
       </div>
-      </div>
-         </Link>
-         :
-         <img src={props.image} alt="moviethumb" />  
-     }
-     </div>
     )
 }
 
@@ -35,5 +34,3 @@ movieName: PropTypes.string
 }
 
 export default MovieThumb;
-
-// <img src={props.image} alt="moviethumb" />

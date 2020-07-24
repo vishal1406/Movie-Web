@@ -7,17 +7,16 @@ import LoadMoreBtn from '../../shared/loadMoreBtn/LoadMoreBtn';
 import Spinner from '../../shared/spinner/Spinner';
 import './Home.css';
 
-export const HomeView = ({state})=>{
-    // console.log(state);
+export const HomeView = ({state,searchItems,loadMoreItems})=>{
     return (
         <div className="rmdb-home">
-                <SearchBar callback={this.searchItems} />
+                <SearchBar callback={searchItems} />
                     <div className="rmdb-home-grid">
                       <FourColGrid
                       header={state.searchTerm ? 'Search Result' : 'Popular Movies'}
                       loading={state.loading}
                       >
-                      {this.state.movies.map ( (element, i) => {
+                      {state.movies.map ( (element, i) => {
                           return <MovieThumb
                                   key={i}
                                   clickable={true}
@@ -28,7 +27,7 @@ export const HomeView = ({state})=>{
                                 })}           
                       </FourColGrid>
                       {state.loading ? <Spinner /> : null}
-                      {(state.currentPage <= this.state.totalPages && !this.state.loading) ?
+                      {(state.currentPage <= state.totalPages && !state.loading) ?
                       <LoadMoreBtn text="Load More" onClick={loadMoreItems} />
                       : null }
                     </div>

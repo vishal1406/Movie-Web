@@ -5,10 +5,12 @@
   width: 100%;
 }
 
-.moto{
+.top-format{
   color: white;
   text-decoration: none;
+  font-family: helvetica;
 }
+
 /* Style the links inside the navigation bar */
 .topnav span {
 float: left;

@@ -1,7 +1,7 @@
 import React, { Component }  from 'react';
 import FontAwesome from 'react-fontawesome';
-import './SearchBar.css';
 import {SearchBarView} from './SearchBarView';
+import './SearchBar.css';
 
 class SearchBar extends Component {
     constructor(props){
@@ -23,10 +23,10 @@ class SearchBar extends Component {
 
     render(){
         return (
-            <SearchBarView state={this.state}/>
+            <SearchBarView state={this.state}
+            doSearch={this.doSearch}/>
         );
     }
-
 }
 
 export default SearchBar;

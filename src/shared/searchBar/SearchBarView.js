@@ -2,7 +2,7 @@ import React, { Component }  from 'react';
 import FontAwesome from 'react-fontawesome';
 import './SearchBar.css';
 
-export const SearchBarView = (state)=>{
+export const SearchBarView = ({state,doSearch})=>{
     console.log(state);
     return (
         <div className="rmdb-searchbar">
@@ -11,11 +11,10 @@ export const SearchBarView = (state)=>{
                     <input
                      type="text"
                         className="rmdb-searchbar-input"
-                         placeholder="Search"
-                         onChange={state.doSearch}
-                         value={state.value}
-                     />
+                        placeholder="Search..."
+                        onChange={doSearch}
+                        value={state.value}
+                    />
             </div>
-        </div>  
-    )};
-// export default SearchBarView;
+        </div>
+    )}
