@@ -11,7 +11,6 @@
   font-family: helvetica;
 }
 
-/* Style the links inside the navigation bar */
 .topnav span {
 float: left;
 color: #f2f2f2;
@@ -23,13 +22,11 @@ color: white;
 padding-left: 20px;
 }
 
-/* Change the color of links on hover */
 .topnav span:hover {
 background-color: #432F75;
 color: white;
 }
 
-/* Right-aligned section inside the top navigation */
 .topnav-right {
 float: right;
 padding-right: 16px;

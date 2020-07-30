@@ -1,4 +1,4 @@
-.rmdb-searchbar-content {
+.searchbar-content {
   max-width: 1280px;
   width: 50%;
   height: 45px;
@@ -10,14 +10,14 @@
   margin-top: 20px;
 }
 
-.rmdb-fa-search {
+.fa-search {
   position: absolute;
   left: 20px;
   top: 6px;
   color:white;
 }
 
-.rmdb-searchbar-input {
+.searchbar-input {
   font-family: helvetica;
   font-size: 28px;
   position: absolute;
@@ -31,12 +31,12 @@
 ::placeholder{
   color:white;
 }
-.rmdb-searchbar-input:focus {
+.searchbar-input:focus {
   outline: none;
 }
 
 @media screen and (max-width: 720px) {
-  .rmdb-searchbar-input {
+  .searchbar-input {
     font-size: 28px;
     color: white;
   }

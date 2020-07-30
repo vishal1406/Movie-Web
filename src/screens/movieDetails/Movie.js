@@ -2,19 +2,12 @@ import React, {Component} from 'react';
 import { API_URL, API_KEY } from '../../config';
 import {MovieView} from './MovieView';
 import './Movie.css';
-// import Navigation from '../elements/Navigation/Navigation';
-// import MovieInfo from '../elements/MovieInfo/MovieInfo';
-// import MovieInfoBar from '../elements/MovieInfoBar/MovieInfoBar';
-// import FourColGrid from '../elements/FourColGrid/FourColGrid';
-// import Spinner from '../elements/Spinner/Spinner';
-// import CommentBox from '../elements/CommentBox/CommentBox';
 
 class Movie extends Component {
     constructor(props){
         super(props)
         this.state = {
             movie: null,
-            actors: null,
             directors: [],
             loading: false
         }
@@ -41,11 +34,8 @@ class Movie extends Component {
                    const directors = result.crew.filter( (member) => member.job === "Director");
               
                 this.setState({
-                 actors: result.cast,
                  directors,
                  loading: false
-              }, () => {
-                  localStorage.setItem(`${this.props.match.params.movieId}`, JSON.stringify(this.state));
               })
              })
             })
@@ -57,8 +47,7 @@ class Movie extends Component {
         return (
             <MovieView state={this.state}/>
         );
-                           
-         }
+        }
     }
 export default Movie;
 

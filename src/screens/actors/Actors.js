@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { API_URL, API_KEY, IMAGE_BASE_URL,POSTER_SIZE, BACKDROP_SIZE } from '../../config';
 import SearchBar from '../../shared/searchBar/SearchBar';
 import FourColGrid from '../../shared/fourColGrid/FourColGrid';
-import ActorsThumb from '../../shared/actorsThumb/ActorsThumb';
+import ActorsThumb from '../../shared/actorsThumb/ActorThumb';
 import LoadMoreBtn from '../../shared/loadMoreBtn/LoadMoreBtn';
 import Spinner from '../../shared/spinner/Spinner';
 import './Actors.css';
@@ -62,10 +62,6 @@ fetchItems = (endpoint) => {
             loading: false,
             currentPage: result.page,
             totalPages: result.total_pages
-        }, ()=> {
-            if(this.state.searchTerm === ""){
-            localStorage.setItem('HomeState', JSON.stringify(this.state));
-            }
         })
     })
     .catch(error => console.error('Error:', error))
@@ -73,9 +69,9 @@ fetchItems = (endpoint) => {
 
     render() {
          return (
-            <div className="rmdb-home">
+            <div className="actor">
                 <SearchBar callback={this.searchItems} />
-                    <div className="rmdb-home-grid">
+                    <div className="actor-grid">
                       <FourColGrid
                       header={this.state.searchTerm ? 'Search Result' : 'Popular Actors'}
                       loading={this.state.loading}
@@ -86,7 +82,8 @@ fetchItems = (endpoint) => {
                                   clickable={true}
                                   image={element.profile_path ? `${IMAGE_BASE_URL}${POSTER_SIZE}${element.profile_path}` : './images/no_image.jpg'}
                                   personId={element.id}
-                                  personName={element.original_title}
+                                  personName={element.name}
+                                  popularity={element.popularity}
                                   />
                                 })}           
                       </FourColGrid>

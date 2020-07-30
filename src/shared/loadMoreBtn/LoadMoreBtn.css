@@ -1,4 +1,4 @@
-.rmdb-loadmorebtn {
+.loadmorebtn {
   background: #6073D6;
   width: 20%;
   margin:0 50%;
@@ -13,12 +13,12 @@
   border-radius: 18px;
 }
 
-.rmdb-loadmorebtn p {
+.loadmorebtn p {
   font-family: helvetica;
   font-size:28px;
   padding: 10px;
 }
 
-.rmdb-loadmorebtn:hover {
+.loadmorebtn:hover {
   opacity: 0.8;
 }

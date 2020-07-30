@@ -9,9 +9,9 @@ import './Home.css';
 
 export const HomeView = ({state,searchItems,loadMoreItems})=>{
     return (
-        <div className="rmdb-home">
+        <div className="home">
                 <SearchBar callback={searchItems} />
-                    <div className="rmdb-home-grid">
+                    <div className="home-grid">
                       <FourColGrid
                       header={state.searchTerm ? 'Search Result' : 'Popular Movies'}
                       loading={state.loading}

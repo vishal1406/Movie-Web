@@ -1,5 +1,4 @@
 import React, { Component }  from 'react';
-import FontAwesome from 'react-fontawesome';
 import {SearchBarView} from './SearchBarView';
 import './SearchBar.css';
 

@@ -1,22 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import './ActorsThumb.css';
+import './ActorThumb.css';
 
-const ActorsThumb = (props) => {
+const ActorThumb = (props) => {
     return(
-    <div className="rmdb-personthumb">
+    <div className="personthumb">
       {
       props.clickable ?
-      <Link to={{pathname: `/${props.personId}`, personName: `${props.personName}`}}>
+      <Link to={{pathname: `/actor/${props.personId}`, personName: `${props.personName}`, popularity:`${props.popularity}`}}>
       <div className="flip-card">
         <div className="flip-card-inner">
           <div className="flip-card-front">
              <img src={props.image} alt="personthumb" />
           </div>
           <div className="flip-card-back">
-            <h1>Actor Name</h1> 
-            <p>Popularity</p>
+            <h1>{props.personName}</h1> 
+            <p>Rating:{props.popularity}</p>
             <p>Click for more Info</p>
           </div>
         </div>
@@ -29,10 +29,10 @@ const ActorsThumb = (props) => {
     )
 }
 
-ActorsThumb.propTypes = {
+ActorThumb.propTypes = {
 image:  PropTypes.string,
 personId: PropTypes.number,
 personName: PropTypes.string
 }
 
-export default ActorsThumb;
+export default ActorThumb;

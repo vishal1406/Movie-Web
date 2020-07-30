@@ -5,12 +5,12 @@ import './SearchBar.css';
 export const SearchBarView = ({state,doSearch})=>{
     console.log(state);
     return (
-        <div className="rmdb-searchbar">
-            <div className="rmdb-searchbar-content">
-                <FontAwesome className="rmdb-fa-search" name="search" size="2x" />
+        <div className="searchbar">
+            <div className="searchbar-content">
+                <FontAwesome className="fa-search" name="search" size="2x" />
                     <input
                      type="text"
-                        className="rmdb-searchbar-input"
+                        className="searchbar-input"
                         placeholder="Search..."
                         onChange={doSearch}
                         value={state.value}

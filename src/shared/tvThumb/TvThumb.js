@@ -5,18 +5,17 @@ import './TvThumb.css';
 
 const TvThumb = (props) => {
     return (
-    <div className="rmdb-tvthumb">
+    <div className="tvthumb">
       {props.clickable ?
-      <Link to={{pathname: `/${props.tvId}`, tvName: `${props.tvName}`}}>
+      <Link to={{pathname: `/tvSeries/${props.tvId}`, tvName: `${props.tvName}`}}>
       <div className="flip-card">
         <div className="flip-card-inner">
           <div className="flip-card-front">
             <img src={props.image} alt="tvthumb" />
           </div>
           <div className="flip-card-back">
-            <h1>TvSeries Name</h1> 
-            <p>Director</p>
-            <p>Click for more Info</p>
+            <h1>{props.tvId}</h1> 
+            <p>{props.tvName}</p>
           </div>
         </div>
       </div>
@@ -35,5 +34,3 @@ tvName: PropTypes.string
 }
 
 export default TvThumb;
-
-// <img src={props.image} alt="moviethumb" />

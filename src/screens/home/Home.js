@@ -1,10 +1,5 @@
 import React, { Component } from 'react';
 import { API_URL, API_KEY, IMAGE_BASE_URL,POSTER_SIZE, BACKDROP_SIZE } from '../../config';
-import SearchBar from '../../shared/searchBar/SearchBar';
-import FourColGrid from '../../shared/fourColGrid/FourColGrid';
-import MovieThumb from '../../shared/movieThumb/MovieThumb';
-import LoadMoreBtn from '../../shared/loadMoreBtn/LoadMoreBtn';
-import Spinner from '../../shared/spinner/Spinner';
 import './Home.css';
 import {HomeView} from './HomeView';
 
@@ -64,10 +59,6 @@ fetchItems = (endpoint) => {
             loading: false,
             currentPage: result.page,
             totalPages: result.total_pages
-        }, ()=> {
-            if(this.state.searchTerm === ""){
-            localStorage.setItem('HomeState', JSON.stringify(this.state));
-            }
         })
     })
     .catch(error => console.error('Error:', error))

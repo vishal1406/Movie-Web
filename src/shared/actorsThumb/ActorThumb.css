@@ -45,7 +45,7 @@
     transform: rotateY(180deg);
   }
   
-.rmdb-personthumb img {
+.personthumb img {
     width: 500px;
     height: auto;
     max-width: 100%;

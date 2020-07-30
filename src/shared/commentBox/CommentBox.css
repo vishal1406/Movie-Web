@@ -1,4 +1,4 @@
-.App {
+/* .App {
   font-family: Helvetica;
 }
 input[type=text] {
@@ -31,23 +31,42 @@ input[type=text] {
 
 .button:hover {
   opacity: 0.8;
-}
+} */
 
-/* button {
+
+html {
+  box-sizing: border-box;
+}
+body {
+  color: #222;
+  font-family: 'PT Sans', sans-serif;
+  width:100%;
+  line-height: 24px;
+}
+button {
   border: none;
-  border-radius: 0.25rem;
+  border-radius: 1rem;
   font-size: 0.75rem;
   font-weight: bold;
   padding: 0.75em; 
   display: inline-block;
   text-decoration: none;
+  
+  /* &:hover {
+    cursor: pointer;
+  } */
+  /* &:focus {
+    text-decoration: none;
+    outline: none;
+  } */
 }
 .comment-box {
-  margin-left: 350px;
-  text-align: center;
-  max-width: 37.5rem;
-  color: #fff;
-  background-color: #2C222D;
+  width:80%;
+  float:left;
+  width: 100%;
+	 margin-bottom:2em;
+  color: #1a0e0e;
+  background-color: white;
   border-radius: 0.875rem;
   padding: 0.2rem 1rem 2rem;
 }
@@ -57,17 +76,54 @@ input[type=text] {
   margin-bottom: 2rem;
   padding: 1rem;  
 }
+textarea{
+  border: none;
+  border-bottom: 1px solid grey;
+  font-size: 0.85rem;
+  padding: 0.25rem 0;
+  width: 99%;
+}
+input{
+  border: none;
+  border-bottom: 1px solid grey;
+  font-size: 0.85rem;
+  padding: 0.25rem 0;
+  width: 99%;
+}
+.comment-form-fields {
+  margin-bottom: 0.25rem;
+   
+    
+    
+    /* &:focus {
+      border-bottom-color: $nc-blue;
+      outline: none;
+    } */
+  }
+  textarea {
+    font-style: italic;
+    margin-top:20px;
+  }
 
+/* .comment-form-actions {
+  
+} */
+h3{
+left: 100%;
+color: pink;
+margin-left: -130px !important;
+}
 .comment-count {
-  color: #404040;
+  color: grey;
 }
 #comment-reveal {
-  float: right;
+  float: left;
+  margin-top: -30px;
   background-color: blue;
   color: #fff;
 }
 .comment {
-  border-top: 0.125rem solid ;
+  border-top: 0.125rem solid grey;
 }
 .comment-body {
   font-style: italic;
@@ -78,7 +134,11 @@ input[type=text] {
 }
 .comment-footer-delete {
   padding: 0.2rem 0;
-  color: #404040;
+  color: grey;
   text-decoration: none;
-
-} */
+  
+  /* &:hover {
+    color: $nc-blue;
+    font-weight: bold;
+  } */
+}

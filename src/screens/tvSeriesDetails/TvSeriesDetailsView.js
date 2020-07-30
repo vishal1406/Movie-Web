@@ -4,13 +4,10 @@ import TvInfo from '../../shared/tvInfo/TvInfo';
 import Spinner from '../../shared/spinner/Spinner';
 import CommentBox from '../../shared/commentBox/CommentBox';
 import './TvSeriesDetails.css';
-// import FourColGrid from '../elements/FourColGrid/FourColGrid';
-// import Navigation from '../elements/Navigation/Navigation';
 
 export const TvSeriesDetailsView = ({state})=>{
-    // console.log(state);
     return (
-        <div className="rmdb-movie">
+        <div className="tv">
             {state.tv ?
                 <div>
                     <TvInfo tv={state.tv} directors={state.directors} />

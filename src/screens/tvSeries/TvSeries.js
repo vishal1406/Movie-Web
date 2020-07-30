@@ -2,17 +2,17 @@ import React, { Component } from 'react';
 import { API_URL, API_KEY, IMAGE_BASE_URL,POSTER_SIZE, BACKDROP_SIZE } from '../../config';
 import SearchBar from '../../shared/searchBar/SearchBar';
 import FourColGrid from '../../shared/fourColGrid/FourColGrid';
-import MovieThumb from '../../shared/tvThumb/TvThumb';
+import TvThumb from '../../shared/tvThumb/TvThumb';
 import LoadMoreBtn from '../../shared/loadMoreBtn/LoadMoreBtn';
 import Spinner from '../../shared/spinner/Spinner';
 import './TvSeries.css';
-// import {HomeView} from './HomeView';
+// import {TvSeriesView} from './TvSeriesView';
 
 class TvSeries extends Component {
 constructor(props){
         super(props)
         this.state = {
-            movies: [],
+            tv: [],
             loading: false,
             currentPage: 0,
             totalPages: 0,
@@ -31,7 +31,7 @@ componentDidMount(){
 searchItems = (searchTerm) => {
 let endpoint = '';
 this.setState({
-    movies: [],
+    tv: [],
     loading: true,
     searchTerm
 })
@@ -61,14 +61,10 @@ fetchItems = (endpoint) => {
     .then(result => result.json())
     .then(result => {
         this.setState({
-            movies: [...this.state.movies, ...result.results],
+            tv: [...this.state.tv, ...result.results],
             loading: false,
             currentPage: result.page,
             totalPages: result.total_pages
-        }, ()=> {
-            if(this.state.searchTerm === ""){
-            localStorage.setItem('HomeState', JSON.stringify(this.state));
-            }
         })
     })
     .catch(error => console.error('Error:', error))
@@ -76,20 +72,20 @@ fetchItems = (endpoint) => {
 
     render() {
          return (
-            <div className="rmdb-home">
+            <div className="tv">
                 <SearchBar callback={this.searchItems} />
-                    <div className="rmdb-home-grid">
+                    <div className="tv-grid">
                       <FourColGrid
                       header={this.state.searchTerm ? 'Search Result' : 'Popular TvSeries'}
                       loading={this.state.loading}
                       >
-                      {this.state.movies.map ( (element, i) => {
-                          return <MovieThumb
+                      {this.state.tv.map ( (element, i) => {
+                          return <TvThumb
                                   key={i}
                                   clickable={true}
                                   image={element.poster_path ? `${IMAGE_BASE_URL}${POSTER_SIZE}${element.poster_path}` : '../../assets/no_image.jpg'}
                                   tvId={element.id}
-                                  tvName={element.original_title}
+                                  tvName={element.original_name}
                                   />
                                 })}           
                       </FourColGrid>

@@ -34,14 +34,8 @@ class ActorDetails extends Component {
                fetch(endpoint)
                .then(result => result.json())
                .then(result => {
-                   const directors = result.crew.filter( (member) => member.job === "Director");
-              
                 this.setState({
-                 actors: result.cast,
-                 directors,
                  loading: false
-              }, () => {
-                  localStorage.setItem(`${this.props.match.params.personId}`, JSON.stringify(this.state));
               })
              })
             })
