@@ -7,15 +7,17 @@ const TvThumb = (props) => {
     return (
     <div className="tvthumb">
       {props.clickable ?
-      <Link to={{pathname: `/tvSeries/${props.tvId}`, tvName: `${props.tvName}`}}>
+      <Link to={{pathname: `/tvSeries/${props.tvId}`, tvName: `${props.tvName}`,
+      vote_average: `${props.vote_average}`}}>
       <div className="flip-card">
         <div className="flip-card-inner">
           <div className="flip-card-front">
             <img src={props.image} alt="tvthumb" />
           </div>
           <div className="flip-card-back">
-            <h1>{props.tvId}</h1> 
-            <p>{props.tvName}</p>
+            <h2>{props.tvName}</h2>
+            <h2>Rating: {props.vote_average}</h2>
+            <p>Click for more Info</p>
           </div>
         </div>
       </div>

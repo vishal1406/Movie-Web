@@ -46,7 +46,9 @@ class TvSeriesDetails extends Component {
     }
     render() {
         return (
-            <TvSeriesDetailsView state={this.state}/>
+            <TvSeriesDetailsView state={this.state}
+             tvId={this.props.match.params.tvId}/>
+
         );
     }
     }

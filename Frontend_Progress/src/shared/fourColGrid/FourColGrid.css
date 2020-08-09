@@ -16,6 +16,7 @@
   animation: animateGrid 0.5s;
   overflow: hidden;
   border-radius: 18px;
+  width: 270px;
 }
 
 @keyframes animateGrid {

@@ -5,9 +5,10 @@ import './MovieThumb.css';
 
 const MovieThumb = (props) => {
     return (
-    <div className="rmdb-moviethumb">
+    <div className="moviethumb">
     {props.clickable ?
-      <Link to={{pathname: `/movie/${props.movieId}`, movieName: `${props.movieName}`}}>
+      <Link to={{pathname: `/movie/${props.movieId}`, movieName: `${props.movieName}`, 
+      vote_average:`{props.vote_average}`, release_date:`{props.release_date}`}}>
       <div className="flip-card">
         <div className="flip-card-inner">
           <div className="flip-card-front">
@@ -15,6 +16,7 @@ const MovieThumb = (props) => {
           </div>
           <div className="flip-card-back">
             <h2>{props.movieName}</h2>
+            <h2>Rating: {props.vote_average}</h2>
             <p>Click for more Info</p>
           </div>
         </div>

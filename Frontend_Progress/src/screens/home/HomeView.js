@@ -23,6 +23,8 @@ export const HomeView = ({state,searchItems,loadMoreItems})=>{
                                   image={element.poster_path ? `${IMAGE_BASE_URL}${POSTER_SIZE}${element.poster_path}` : './images/no_image.jpg'}
                                   movieId={element.id}
                                   movieName={element.original_title}
+                                  vote_average={element.vote_average}
+                                  release_date={element.release_date}
                                   />
                                 })}           
                       </FourColGrid>
@@ -33,4 +35,4 @@ export const HomeView = ({state,searchItems,loadMoreItems})=>{
                     </div>
             </div>
         );
-    };
+};

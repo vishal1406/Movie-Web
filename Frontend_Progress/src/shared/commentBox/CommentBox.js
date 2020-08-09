@@ -1,21 +1,21 @@
-import React from 'react';
+import React, {Component} from 'react';
 import './CommentBox.css';
-class CommentBox extends React.Component {
-    constructor() {
-      super();
-      
+
+class CommentBox extends Component {
+    constructor(props) {
+      super(props);
+      console.log(props.tvId)
       this.state = {
         showComments: false,
         comments: [
-          {id: 1, author: "Vishal", body: "It might be awkward, but please don't scroll past this. This Wednesday, for the 1st time recently, we humbly ask you to defend Wikipedia's independence. 98% of our readers don't give; they simply look the other way. If you are an exceptional reader who has already donated, we sincerely thank you. If you donate just ₹ 150, Wikipedia could keep thriving for years. Most people donate because Wikipedia is useful. If Wikipedia has given you ₹ 150 worth of knowledge this year, take a minute to donate. Show the volunteers who bring you reliable, neutral information that their work matters. Thank you."},
-          {id: 2, author: "Rahul", body: "It might be awkward, but please don't scroll past this. This Wednesday, for the 1st time recently, we humbly ask you to defend Wikipedia's independence. 98% of our readers don't give; they simply look the other way. If you are an exceptional reader who has already donated, we sincerely thank you. If you donate just ₹ 150, Wikipedia could keep thriving for years. Most people donate because Wikipedia is useful. If Wikipedia has given you ₹ 150 worth of knowledge this year, take a minute to donate. Show the volunteers who bring you reliable, neutral information that their work matters. Thank you."},
-          {id: 3, author: "Bittu", body: "It might be awkward, but please don't scroll past this. This Wednesday, for the 1st time recently, we humbly ask you to defend Wikipedia's independence. 98% of our readers don't give; they simply look the other way. If you are an exceptional reader who has already donated, we sincerely thank you. If you donate just ₹ 150, Wikipedia could keep thriving for years. Most people donate because Wikipedia is useful. If Wikipedia has given you ₹ 150 worth of knowledge this year, take a minute to donate. Show the volunteers who bring you reliable, neutral information that their work matters. Thank you."}
-        ]
+        //   {id: 1, author: "Vishal", body: "It might be awkward, but please don't scroll past this. This Wednesday, for the 1st time recently, we humbly ask you to defend Wikipedia's independence. 98% of our readers don't give; they simply look the other way. If you are an exceptional reader who has already donated, we sincerely thank you. If you donate just ₹ 150, Wikipedia could keep thriving for years. Most people donate because Wikipedia is useful. If Wikipedia has given you ₹ 150 worth of knowledge this year, take a minute to donate. Show the volunteers who bring you reliable, neutral information that their work matters. Thank you."},
+        //   {id: 2, author: "Rahul", body: "It might be awkward, but please don't scroll past this. This Wednesday, for the 1st time recently, we humbly ask you to defend Wikipedia's independence. 98% of our readers don't give; they simply look the other way. If you are an exceptional reader who has already donated, we sincerely thank you. If you donate just ₹ 150, Wikipedia could keep thriving for years. Most people donate because Wikipedia is useful. If Wikipedia has given you ₹ 150 worth of knowledge this year, take a minute to donate. Show the volunteers who bring you reliable, neutral information that their work matters. Thank you."},
+        //   {id: 3, author: "Bittu", body: "It might be awkward, but please don't scroll past this. This Wednesday, for the 1st time recently, we humbly ask you to defend Wikipedia's independence. 98% of our readers don't give; they simply look the other way. If you are an exceptional reader who has already donated, we sincerely thank you. If you donate just ₹ 150, Wikipedia could keep thriving for years. Most people donate because Wikipedia is useful. If Wikipedia has given you ₹ 150 worth of knowledge this year, take a minute to donate. Show the volunteers who bring you reliable, neutral information that their work matters. Thank you."}
+      ]
       };
     }
-    
     render () {
-      const comments = this._getComments();
+      const comments = this.getComments();
       let commentNodes;
       let buttonText = 'Show Comments';
       
@@ -27,39 +27,41 @@ class CommentBox extends React.Component {
       return(
         <div className="comment-box">
           <h2>Join the Discussion!</h2>
-          <CommentForm addComment={this._addComment.bind(this)}/>
+          <CommentForm addComment={this.addComment.bind(this)}/>
           
           <div>
-          <button id="comment-reveal" onClick={this._handleClick.bind(this)}>
+          <button id="comment-reveal" onClick={this.handleClick.bind(this)}>
             {buttonText}
           </button>
           </div>
           
-          <h3 className="totalCount">Comments</h3>
+          
           <h4 className="comment-count">
-            {this._getCommentsTitle(comments.length)}
+            {this.getCommentsTitle(comments.length)}
           </h4>
           {commentNodes}
         </div>  
       );
     } // end render
     
-    _addComment(author, body) {
+    addComment(author, body) {
       const comment = {
         id: this.state.comments.length + 1,
-        author,
-        body
+        author:author,
+        body:body
       };
-      this.setState({ comments: this.state.comments.concat([comment]) }); // *new array references help React stay fast, so concat works better than push here.
-    }
+    this.setState({ comments: this.state.comments.concat([comment]) }); // *new array references help React stay fast, so concat works better than push here.
+      
+    console.log(this.state.comments);
+  }
     
-    _handleClick() {
+    handleClick() {
       this.setState({
         showComments: !this.state.showComments
       });
     }
     
-    _getComments() {    
+    getComments() {    
       return this.state.comments.map((comment) => { 
         return (
           <Comment 
@@ -70,7 +72,7 @@ class CommentBox extends React.Component {
       });
     }
     
-    _getCommentsTitle(commentCount) {
+    getCommentsTitle(commentCount) {
       if (commentCount === 0) {
         return 'No comments yet';
       } else if (commentCount === 1) {
@@ -84,7 +86,7 @@ class CommentBox extends React.Component {
   class CommentForm extends React.Component {
     render() {
       return (
-        <form className="comment-form" onSubmit={this._handleSubmit.bind(this)}>
+        <form className="comment-form" onSubmit={this.handleSubmit.bind(this)}>
           <div className="comment-form-fields">
             <input placeholder="Name" required ref={(input) => this._author = input}></input><br />
             <textarea placeholder="Comment" rows="4" required ref={(textarea) => this._body = textarea}></textarea>
@@ -96,7 +98,7 @@ class CommentBox extends React.Component {
       );
     } // end render
     
-    _handleSubmit(event) { 
+    handleSubmit(event) { 
       event.preventDefault();   // prevents page from reloading on submit
       let author = this._author;
       let body = this._body;
@@ -114,5 +116,4 @@ class CommentBox extends React.Component {
       );
     }
   }
-  
 export default CommentBox;

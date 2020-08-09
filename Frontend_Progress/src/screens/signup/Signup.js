@@ -1,72 +1,89 @@
-import React from 'react';
+import React, { useState , Component} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+// import './Signup.css';
 
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    marginTop: theme.spacing(8),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
-  },
-  form: {
-    width: '100%',
-    marginTop: theme.spacing(3),
-  },
-  submit: {
-    margin: theme.spacing(3, 0, 2),
-  },
-}));
+export default class SignUp extends Component{
+  constructor(props){
+    super(props)
+    this.state = {
+      name:'',
+      email:'',
+      password:''
+    }
+  }
+  changeHandler = (e) =>{
+    this.setState({[e.target.name]:e.target.value})
+  }
+  submitHandler = (e) =>{
+    e.preventDefault()
+    console.log(this.state)
+    //const proxyurl ="https://cors-anywhere.herokuapp.com/";
+    const url ="http://localhost:7070/api/users"
+    const response =fetch(url, {
+       method: 'POST',
+       headers: {
+        'Content-Type': 'application/json'
+      },
+       body: JSON.stringify(this.state)
+     })
+      .then(response => response.json())
+      .then(response => console.log(response))
+      .catch(() => console.log("Can’t access " + url + " response. Blocked by browser"));
+    
+  }
 
-export default function SignUp() {
-  const classes = useStyles();
-
+render(){
+  function validateForm() {
+    return email.length > 0 && password.length > 0;
+  }
+  const paper = { marginTop: "64px",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center"};
+  
+    const avatar = {
+    margin: "16px",
+    backgroundColor: "#dc004e"
+  }
+  const form = {
+    width: "100%",
+    marginTop: "24px"
+  }
+  const submit={
+      margin: "24px 0px 16px"
+  }
+  const {name, email, password} = this.state
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
-      <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
+      <div style={paper}>
+        <Avatar style={avatar}>
         </Avatar>
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <form className={classes.form} noValidate>
+        <form style={form} noValidate onSubmit={this.submitHandler}>
           <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12}>
               <TextField
-                autoComplete="fname"
-                name="firstName"
+                autoComplete="name"
+                name="name"
                 variant="outlined"
                 required
                 fullWidth
-                id="firstName"
-                label="First Name"
+                id="name"
+                label="Name"
                 autoFocus
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="lastName"
-                label="Last Name"
-                name="lastName"
-                autoComplete="lname"
+                value={name}
+                onChange={this.changeHandler}
               />
             </Grid>
             <Grid item xs={12}>
@@ -78,6 +95,8 @@ export default function SignUp() {
                 label="Email Address"
                 name="email"
                 autoComplete="email"
+                value={email}
+                onChange={this.changeHandler}
               />
             </Grid>
             <Grid item xs={12}>
@@ -90,6 +109,8 @@ export default function SignUp() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                value={password}
+                onChange={this.changeHandler}
               />
             </Grid>
           </Grid>
@@ -98,7 +119,8 @@ export default function SignUp() {
             fullWidth
             variant="contained"
             color="primary"
-            className={classes.submit}
+            disabled={!validateForm()}
+            style={submit}
           >
             Sign Up
           </Button>
@@ -116,3 +138,69 @@ export default function SignUp() {
     </Container>
   );
 }
+}
+
+// Just Checking out myself
+// import React, { Component } from 'react';
+// export default class SignUp extends Component{
+//   constructor(props){
+//     super(props)
+//     this.state = {
+//       name:'',
+//       email:'',
+//       password:''
+//     }
+//   }
+//   changeHandler = (e) =>{
+//     this.setState({[e.target.name]:e.target.value})
+//   }
+//   submitHandler = (e) =>{
+//     e.preventDefault()
+//     console.log(this.state)
+//     //const proxyurl ="https://cors-anywhere.herokuapp.com/";
+//     const url ="http://localhost:7070/api/users"
+//     const response =fetch(url, {
+//        method: 'POST',
+//        headers: {
+//         'Content-Type': 'application/json'
+//       },
+//        body: JSON.stringify(this.state)
+//      })
+//       .then(response => response.json())
+//       .then(response => console.log(response))
+//       .catch(() => console.log("Can’t access " + url + " response. Blocked by browser"));
+    
+//   }
+
+//   render(){
+//     const {name, email, password} = this.state
+//     return(
+//       <div>
+//         <form onSubmit={this.submitHandler}>
+//           <div>
+//             <input 
+//             type="text"
+//              name="name" 
+//              value={name}
+//              onChange={this.changeHandler}/>
+//           </div>
+//           <div>
+//             <input 
+//             type="text" 
+//             name="email" 
+//             value={email}
+//             onChange={this.changeHandler}/>
+//           </div>
+//           <div>
+//             <input 
+//             type="text" 
+//             name="password" 
+//             value={password}
+//             onChange={this.changeHandler}/>
+//           </div>
+//           <button type="submit">SignUp</button>
+//         </form>
+//       </div>
+//     );
+//   }
+// }

@@ -8,15 +8,17 @@ const ActorThumb = (props) => {
     <div className="personthumb">
       {
       props.clickable ?
-      <Link to={{pathname: `/actor/${props.personId}`, personName: `${props.personName}`, popularity:`${props.popularity}`}}>
+      <Link to={{pathname: `/actor/${props.personId}`, personName: `${props.personName}`, 
+      popularity:`${props.popularity}`}}>
       <div className="flip-card">
         <div className="flip-card-inner">
           <div className="flip-card-front">
              <img src={props.image} alt="personthumb" />
           </div>
           <div className="flip-card-back">
-            <h1>{props.personName}</h1> 
-            <p>Rating:{props.popularity}</p>
+            <h2>{props.personName}</h2> 
+            <h3>Popularity Score</h3>
+            <h3>{props.popularity}</h3>
             <p>Click for more Info</p>
           </div>
         </div>

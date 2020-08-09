@@ -86,6 +86,7 @@ fetchItems = (endpoint) => {
                                   image={element.poster_path ? `${IMAGE_BASE_URL}${POSTER_SIZE}${element.poster_path}` : '../../assets/no_image.jpg'}
                                   tvId={element.id}
                                   tvName={element.original_name}
+                                  vote_average={element.vote_average}
                                   />
                                 })}           
                       </FourColGrid>

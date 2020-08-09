@@ -14,6 +14,9 @@ const Header = () => {
         <span>
           <Link to="/actors" className="top-format">Actors</Link>
         </span>
+        <span>
+          <Link to="/favourite" className="top-format">Favourites</Link>
+        </span>
         <div className="topnav-right">
           <span>
             <Link to="/signin" className="top-format">Sign in</Link>

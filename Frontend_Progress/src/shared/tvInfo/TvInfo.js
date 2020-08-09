@@ -28,10 +28,6 @@ const TvInfo = (props) => {
             <meter min="0" max="100" optimum="100" low="40" high="70" value={props.tv.vote_average * 10}></meter>
             <p className="score">{props.tv.vote_average}</p>
           </div>
-          {props.directors.length > 1 ? <h3>Directors</h3> : <h3>Director</h3> }
-          {props.directors.map( (element, i) => {
-          return <p  key={i} className="director">{element.name}</p>
-      })}
         </div>
           <FontAwesome className="fa-film" name="film" size="5x" />
         </div>

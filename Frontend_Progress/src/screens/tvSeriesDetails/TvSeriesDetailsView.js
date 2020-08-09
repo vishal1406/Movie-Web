@@ -5,8 +5,9 @@ import Spinner from '../../shared/spinner/Spinner';
 import CommentBox from '../../shared/commentBox/CommentBox';
 import './TvSeriesDetails.css';
 
-export const TvSeriesDetailsView = ({state})=>{
+export const TvSeriesDetailsView = ({state,tvId})=>{
     return (
+
         <div className="tv">
             {state.tv ?
                 <div>
@@ -14,7 +15,7 @@ export const TvSeriesDetailsView = ({state})=>{
                 </div>
             : null}
             {state.loading ? <Spinner /> : null}
-            <CommentBox/>
+            <CommentBox tvId={tvId}/>
         </div>
         );
     }
