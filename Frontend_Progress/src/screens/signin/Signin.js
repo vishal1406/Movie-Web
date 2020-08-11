@@ -9,7 +9,6 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import {Redirect} from 'react-router-dom';
-// import './Signup.css';
 
 export default class SignUp extends Component{
   constructor(props){
@@ -26,14 +25,38 @@ export default class SignUp extends Component{
   }
   submitHandler = (e) =>{
     e.preventDefault()
+    
     const {email, password} = this.state
     console.log(this.state)
-    if(email==='vishalkumar' && password == "vishalkumar")
+    const url ="http://localhost:7070/api/login"
+    const ans=''
+    const response =fetch(url, {
+       method: 'POST',
+       headers: {
+        'Content-Type': 'application/json'
+        },
+        mode: 'cors',
+      body:  JSON.stringify({email:this.state.email, password:this.state.password})
+     })
+      .then(response => response.text())
+      .then(response =>{
+        if(response==="Success")
+        {
+          this.setState({
+            loggedIn:true
+          })
+        }
+      else
     {
-      this.setState({
-        loggedIn:true
-      })
-    }
+      alert ("wrong password")
+    }})
+      .catch(() => console.log("Can’t access " + url + " response. Blocked by browser"));
+    // if(response==="Success")
+    // {
+    //   this.setState({
+    //     loggedIn:true
+    //   })
+    // }
     // const url ="http://localhost:7070/api/users"
     // const response =fetch(url, {
     //    method: 'POST',
@@ -45,7 +68,6 @@ export default class SignUp extends Component{
     //   .then(response => response.json())
     //   .then(response => console.log(response))
     //   .catch(() => console.log("Can’t access " + url + " response. Blocked by browser"));
-    
   }
 
 render(){

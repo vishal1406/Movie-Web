@@ -4,7 +4,7 @@ import './CommentBox.css';
 class CommentBox extends Component {
     constructor(props) {
       super(props);
-      console.log(props.tvId)
+      console.log(props.movieId)
       this.state = {
         showComments: false,
         comments: [
@@ -12,7 +12,26 @@ class CommentBox extends Component {
         //   {id: 2, author: "Rahul", body: "It might be awkward, but please don't scroll past this. This Wednesday, for the 1st time recently, we humbly ask you to defend Wikipedia's independence. 98% of our readers don't give; they simply look the other way. If you are an exceptional reader who has already donated, we sincerely thank you. If you donate just ₹ 150, Wikipedia could keep thriving for years. Most people donate because Wikipedia is useful. If Wikipedia has given you ₹ 150 worth of knowledge this year, take a minute to donate. Show the volunteers who bring you reliable, neutral information that their work matters. Thank you."},
         //   {id: 3, author: "Bittu", body: "It might be awkward, but please don't scroll past this. This Wednesday, for the 1st time recently, we humbly ask you to defend Wikipedia's independence. 98% of our readers don't give; they simply look the other way. If you are an exceptional reader who has already donated, we sincerely thank you. If you donate just ₹ 150, Wikipedia could keep thriving for years. Most people donate because Wikipedia is useful. If Wikipedia has given you ₹ 150 worth of knowledge this year, take a minute to donate. Show the volunteers who bring you reliable, neutral information that their work matters. Thank you."}
       ]
-      };
+      }
+    }
+    componentDidMount(){
+
+      this.setState({ showComments:true });
+      const url ="http://localhost:7070/api/comments/"
+      const endpoint = `${url}${this.props.movieId}`;
+      this.fetchItems(endpoint);}
+
+      fetchItems = (endpoint) => {
+        fetch(endpoint)
+            .then(response => response.json())
+            .then(response => {
+                this.setState({
+                    comments: [...response],
+                    showComments: false,
+                })
+            })
+            .then(response=>console.log(this.state.comments))
+            .catch(error => console.error('Error:', error))
     }
     render () {
       const comments = this.getComments();
@@ -27,7 +46,7 @@ class CommentBox extends Component {
       return(
         <div className="comment-box">
           <h2>Join the Discussion!</h2>
-          <CommentForm addComment={this.addComment.bind(this)}/>
+          <CommentForm writeComment={this.writeComment.bind(this)}/>
           
           <div>
           <button id="comment-reveal" onClick={this.handleClick.bind(this)}>
@@ -44,15 +63,27 @@ class CommentBox extends Component {
       );
     } // end render
     
-    addComment(author, body) {
+    writeComment(userName, addComment) {
       const comment = {
         id: this.state.comments.length + 1,
-        author:author,
-        body:body
+        movieId:this.props.movieId,
+        userName:userName,
+        addComment:addComment,
       };
-    this.setState({ comments: this.state.comments.concat([comment]) }); // *new array references help React stay fast, so concat works better than push here.
-      
-    console.log(this.state.comments);
+      this.setState({ comments: this.state.comments.concat([comment]) },()=>console.log(comment)   );
+      console.log(this.state.comments);
+      const url ="http://localhost:7070/api/comments";
+      const response =fetch(url, {
+      method: 'POST',
+      headers: {
+      'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(comment)
+     })
+      .then(response => response.json())
+      .then(response => console.log(response))
+      .catch(() => console.log("Can’t access " + url + " response. Blocked by browser"));
+  
   }
     
     handleClick() {
@@ -61,12 +92,12 @@ class CommentBox extends Component {
       });
     }
     
-    getComments() {    
-      return this.state.comments.map((comment) => { 
+    getComments(){   
+      return this.state.comments.map((comment) => {
         return (
-          <Comment 
-            author={comment.author} 
-            body={comment.body} 
+          <Comment
+            userName={comment.userName} 
+            addComment={comment.addComment} 
             key={comment.id} />
         ); 
       });
@@ -88,8 +119,8 @@ class CommentBox extends Component {
       return (
         <form className="comment-form" onSubmit={this.handleSubmit.bind(this)}>
           <div className="comment-form-fields">
-            <input placeholder="Name" required ref={(input) => this._author = input}></input><br />
-            <textarea placeholder="Comment" rows="4" required ref={(textarea) => this._body = textarea}></textarea>
+            <input placeholder="Name" required ref={(input) => this._userName = input}></input><br />
+            <textarea placeholder="Comment" rows="4" required ref={(textarea) => this._addComment = textarea}></textarea>
           </div>
           <div className="comment-form-actions">
             <button type="submit">Post Comment</button>
@@ -99,10 +130,10 @@ class CommentBox extends Component {
     } // end render
     
     handleSubmit(event) { 
-      event.preventDefault();   // prevents page from reloading on submit
-      let author = this._author;
-      let body = this._body;
-      this.props.addComment(author.value, body.value);
+      event.preventDefault();
+      let userName = this._userName;
+      let addComment = this._addComment;
+      this.props.writeComment(userName.value, addComment.value);
     }
   } // end CommentForm component
   
@@ -110,8 +141,8 @@ class CommentBox extends Component {
     render () {
       return(
         <div className="comment">
-          <p className="comment-header">{this.props.author}</p>
-          <p className="comment-body">- {this.props.body}</p>
+          <p className="comment-header">{this.props.userName}</p>
+          <p className="comment-body">- {this.props.addComment}</p>
         </div>
       );
     }

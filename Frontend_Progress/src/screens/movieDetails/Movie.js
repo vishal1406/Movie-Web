@@ -47,10 +47,10 @@ class Movie extends Component {
             .catch(error => console.error('Error:', error))
     }
     render() {
-        console.log(this.props);
 
         return (
-            <MovieView state={this.state} addToFavourite={this.props.addToFavourite} favourites={this.props.favourites} />
+            <MovieView state={this.state} addToFavourite={this.props.addToFavourite} favourites={this.props.favourites}
+            movieId={this.props.match.params.movieId}/>
         );
     }
 }

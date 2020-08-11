@@ -35,7 +35,7 @@ function Favourite(props) {
                             </div>
 
                         </div>)
-                    : <div style={{textAlign:'center',}}>No favourites</div>
+                    : <div style={{textAlign:'center',marginLeft:'14px'}}>No Favourites Added Till Now</div>
                 }
             </div>
         </Container>

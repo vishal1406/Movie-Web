@@ -19,7 +19,6 @@ constructor(props){
             searchTerm: ''}
     }
 
-
 componentDidMount(){
   
     this.setState({ loading: true });

@@ -26,7 +26,7 @@ export const HomeView = ({state,searchItems,loadMoreItems})=>{
                                   vote_average={element.vote_average}
                                   release_date={element.release_date}
                                   />
-                                })}           
+                                })}
                       </FourColGrid>
                       {state.loading ? <Spinner /> : null}
                       {(state.currentPage <= state.totalPages && !state.loading) ?

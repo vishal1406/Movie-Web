@@ -9,8 +9,7 @@ import { useEffect } from 'react';
 import Rating from '../../shared/rating/Rating';
 
 export const MovieView = (props) => {
-    const { state, addToFavourite, favourites } = props;
-    console.log(props);
+    const { state, addToFavourite, favourites ,movieId} = props;
 
     let isAdded = false;
 
@@ -52,7 +51,7 @@ export const MovieView = (props) => {
                 </div>
                 : null}
             {state.loading ? <Spinner /> : null}
-            <CommentBox />
+            <CommentBox movieId={movieId}/>
         </div>
     );
 }

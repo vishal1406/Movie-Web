@@ -6,12 +6,25 @@ class Rating extends React.Component {
     super();
  
     this.state = {
-      rating: 0
+      rating:null
     };
   }
  
   onStarClick(nextValue, prevValue, name) {
     this.setState({rating: nextValue});
+    console.log(this.state)
+    //const proxyurl ="https://cors-anywhere.herokuapp.com/";
+      const url ="http://localhost:7070/api/ratings"
+      const response =fetch(url, {
+      method: 'POST',
+      headers: {
+      'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({rating:nextValue})
+     })
+      .then(response => response.json())
+      .then(response => console.log(response))
+      .catch(() => console.log("Can’t access " + url + " response. Blocked by browser"));
   }
  
   render() {

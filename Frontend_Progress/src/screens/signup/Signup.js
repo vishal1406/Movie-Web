@@ -8,7 +8,7 @@ import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
-// import './Signup.css';
+import {Redirect} from 'react-router-dom';
 
 export default class SignUp extends Component{
   constructor(props){
@@ -26,13 +26,13 @@ export default class SignUp extends Component{
     e.preventDefault()
     console.log(this.state)
     //const proxyurl ="https://cors-anywhere.herokuapp.com/";
-    const url ="http://localhost:7070/api/users"
-    const response =fetch(url, {
-       method: 'POST',
-       headers: {
-        'Content-Type': 'application/json'
+      const url ="http://localhost:7070/api/users"
+      const response =fetch(url, {
+      method: 'POST',
+      headers: {
+      'Content-Type': 'application/json'
       },
-       body: JSON.stringify(this.state)
+      body: JSON.stringify(this.state)
      })
       .then(response => response.json())
       .then(response => console.log(response))

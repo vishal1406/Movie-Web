@@ -14,7 +14,7 @@ import Favourites from './screens/favourites/favourites';
 
 const Routing = () => {
     return (
-        <BrowserRouter basename="Home">
+        <BrowserRouter >
             <React.Fragment>
                 <div>
                     <Header />

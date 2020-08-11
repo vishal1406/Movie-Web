@@ -61,6 +61,7 @@ class Home extends Component {
                     totalPages: result.total_pages
                 }, this.props.setMovies([...this.state.movies, ...result.results]))
             })
+            //.then(result=>console.log(this.state.movies))
             .catch(error => console.error('Error:', error))
     }
 
