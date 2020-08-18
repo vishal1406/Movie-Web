@@ -2,11 +2,11 @@
   max-width: 1280px;
   width: 50%;
   height: 45px;
-  background:#6073D6;
+  background: #6073d6;
   margin: 0 auto;
   border-radius: 40px;
   position: relative;
-  color:white;
+  color: white;
   margin-top: 20px;
 }
 
@@ -14,7 +14,7 @@
   position: absolute;
   left: 20px;
   top: 6px;
-  color:white;
+  color: white;
 }
 
 .searchbar-input {
@@ -28,8 +28,8 @@
   height: 40px;
   color: white;
 }
-::placeholder{
-  color:white;
+::placeholder {
+  color: white;
 }
 .searchbar-input:focus {
   outline: none;

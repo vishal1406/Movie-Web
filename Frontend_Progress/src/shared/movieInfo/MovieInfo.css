@@ -10,10 +10,10 @@
 
 @keyframes animateMovieinfo {
   from {
-      opacity:0;
+    opacity: 0;
   }
   to {
-      opacity:1;
+    opacity: 1;
   }
 }
 
@@ -48,7 +48,7 @@
 
 .movieinfo-text h1 {
   font-family: helvetica;
-  font-size:48px;
+  font-size: 48px;
   margin: 0;
 }
 
@@ -90,11 +90,11 @@
 }
 
 meter::-webkit-meter-bar {
-  background: #FFF;
-  width:200px;
+  background: #fff;
+  width: 200px;
 }
 meter::-webkit-meter-optimum-value {
-  background: linear-gradient(to bottom,#15063A);
+  background: linear-gradient(to bottom, #15063a);
 }
 meter::-webkit-meter-suboptimum-value {
   background: linear-gradient(to bottom, #fbb450);

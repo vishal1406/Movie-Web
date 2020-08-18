@@ -1,14 +1,13 @@
-import React, { Component, useState } from 'react';
+import React, { useState } from 'react';
 import MovieInfo from '../../shared/movieInfo/MovieInfo';
 import MovieInfoBar from '../../shared/movieInfoBar/MovieInfoBar';
 import Spinner from '../../shared/spinner/Spinner';
 import CommentBox from '../../shared/commentBox/CommentBox';
-import './Movie.css';
+import './MovieDetails.css';
 import { Button, Typography } from '@material-ui/core';
 import { useEffect } from 'react';
-import Rating from '../../shared/rating/Rating';
 
-export const MovieView = (props) => {
+export const MovieDetailsView = (props) => {
     const { state, addToFavourite, favourites ,movieId} = props;
 
     let isAdded = false;
@@ -40,7 +39,7 @@ export const MovieView = (props) => {
         <div className="movie">
             {state.movie ?
                 <div>
-                    <MovieInfo movie={state.movie} directors={state.directors} />
+                    <MovieInfo movieId ={movieId} movie={state.movie} directors={state.directors} />
                     <MovieInfoBar time={state.movie.runtime} budget={state.movie.budget} revenue={state.movie.revenue} />
                     <div style={{ margin: '10px' }}>
                         {added ?

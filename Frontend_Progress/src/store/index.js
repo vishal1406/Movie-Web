@@ -2,13 +2,12 @@ import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import userReducer from './reducers/UserReducer';
 import thunk from 'redux-thunk';
 
-import { persistReducer, persistStore } from 'redux-persist'
+import { persistReducer} from 'redux-persist'
 import storage from 'redux-persist/lib/storage';
 
 const persistConfig = {
     key: 'authType',
-    storage: storage,
-    // whitelist: // which reducer want to store
+    storage: storage
 };
 
 const storeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

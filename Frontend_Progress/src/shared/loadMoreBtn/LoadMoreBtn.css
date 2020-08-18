@@ -1,10 +1,10 @@
 .loadmorebtn {
-  background: #6073D6;
+  background: #6073d6;
   width: 20%;
-  margin:0 50%;
+  margin: 0 50%;
   height: 45px;
-  position:relative;
-  left:-120px;
+  position: relative;
+  left: -120px;
   min-height: 50px;
   text-align: center;
   color: #fff;
@@ -15,7 +15,7 @@
 
 .loadmorebtn p {
   font-family: helvetica;
-  font-size:28px;
+  font-size: 28px;
   padding: 10px;
 }
 
